@@ -60,6 +60,8 @@ export function App() {
                 <option value="lucide">lucide-react</option>
                 <option value="radix">@radix-ui/react-icons</option>
                 <option value="phosphor">@phosphor-icons/react</option>
+                <option value="untitledui">@untitledui/icons</option>
+                <option value="iconoir">iconoir-react</option>
               </select>
             </label>
           ) : null}

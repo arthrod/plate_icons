@@ -97,8 +97,130 @@ const PHOSPHOR_ALIASES: Record<string, string> = {
   "x": "XIcon",
 } as const;
 
+const UNTITLEUI_ALIASES: Record<string, string> = {
+  "a-large-small": "Type01",
+  "arrow-up-to-line": "UploadCloud01",
+  "baseline": "Palette",
+  "bold": "Bold01",
+  "chevron-down": "ChevronDown",
+  "chevron-right": "ChevronRight",
+  "chevrons-left": "ChevronLeftDouble",
+  "circle-user-round": "UserCircle",
+  "clock-9": "Clock",
+  "code-2": "Code01",
+  "ellipsis": "DotsHorizontal",
+  "file-pen": "PencilLine",
+  "file-plus": "FilePlus01",
+  "file-text": "File02",
+  "file": "File01",
+  "highlighter": "Brush01",
+  "house": "Home01",
+  "indent": "RightIndent01",
+  "italic": "Italic01",
+  "link": "Link01",
+  "list-ordered": "List",
+  "list": "List",
+  "list-checks": "CheckSquare",
+  "menu": "Menu01",
+  "message-square": "MessageSquare01",
+  "message-square-plus": "MessagePlusSquare",
+  "message-square-text": "MessageTextSquare01",
+  "more-horizontal": "DotsHorizontal",
+  "move-vertical": "Move",
+  "music": "MusicNote01",
+  "outdent": "LeftIndent01",
+  "pen": "Pencil01",
+  "pencil-line": "PencilLine",
+  "plus": "Plus",
+  "redo-2": "RefreshCw01",
+  "save": "Save01",
+  "search": "SearchLg",
+  "settings": "Settings01",
+  "settings-2": "Settings02",
+  "smile": "FaceSmile",
+  "square-pen": "Pencil02",
+  "strikethrough": "Strikethrough01",
+  "superscript": "Subscript",
+  "table": "Table",
+  "trash-2": "Trash02",
+  "type": "Type01",
+  "underline": "Underline01",
+  "undo-2": "RefreshCcw01",
+  "upload": "Upload01",
+  "users": "Users01",
+  "wand-sparkles": "MagicWand01",
+  "x": "X",
+  "image": "Image01",
+  "video": "VideoRecorder",
+} as const;
+
+const ICONOIR_ALIASES: Record<string, string> = {
+  "a-large-small": "TextSize",
+  "arrow-up-to-line": "UploadDataWindow",
+  "baseline": "ColorFilter",
+  "bold": "Bold",
+  "chevron-down": "NavArrowDown",
+  "chevron-right": "NavArrowRight",
+  "chevrons-left": "FastArrowLeft",
+  "circle-user-round": "UserCircle",
+  "clock-9": "Clock",
+  "code-2": "Code",
+  "ellipsis": "MoreHoriz",
+  "file-pen": "PageEdit",
+  "file-plus": "PagePlus",
+  "file-text": "Page",
+  "file": "Page",
+  "highlighter": "FillColor",
+  "house": "Home",
+  "indent": "AlignRight",
+  "italic": "Italic",
+  "link": "Link",
+  "list-ordered": "NumberedListLeft",
+  "list": "List",
+  "list-checks": "TaskList",
+  "menu": "Menu",
+  "message-square": "ChatBubble",
+  "message-square-plus": "ChatPlusIn",
+  "message-square-text": "ChatLines",
+  "more-horizontal": "MoreHoriz",
+  "move-vertical": "Drag",
+  "music": "MusicNote",
+  "outdent": "AlignLeft",
+  "pen": "EditPencil",
+  "pencil-line": "DesignPencil",
+  "plus": "Plus",
+  "redo-2": "Redo",
+  "save": "FloppyDisk",
+  "search": "Search",
+  "settings": "Settings",
+  "settings-2": "SettingsProfiles",
+  "smile": "Emoji",
+  "square-pen": "Edit",
+  "strikethrough": "Strikethrough",
+  "superscript": "Text",
+  "table": "Table",
+  "trash-2": "Trash",
+  "type": "Type",
+  "underline": "Underline",
+  "undo-2": "Undo",
+  "upload": "Upload",
+  "users": "User",
+  "wand-sparkles": "Sparks",
+  "x": "Xmark",
+  "image": "MediaImage",
+  "video": "VideoCamera",
+} as const;
+
 function normalizeKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function tokenToPascal(value: string) {
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join("");
 }
 
 function tokenToPascalIcon(token: string) {
@@ -126,6 +248,8 @@ function buildLibraryMaps() {
     lucide: { byNormalized: new Map() },
     radix: { byNormalized: new Map(), byNormalizedNoIcon: new Map() },
     phosphor: { byNormalized: new Map() },
+    untitledui: { byNormalized: new Map() },
+    iconoir: { byNormalized: new Map() },
   };
 
   for (const lib of ICON_LIBRARIES) {
@@ -152,6 +276,10 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
     if (library === "radix") return RADIX_ALIASES[token] ?? token;
     if (library === "phosphor")
       return PHOSPHOR_ALIASES[token] ?? tokenToPascalIcon(token);
+    if (library === "untitledui")
+      return UNTITLEUI_ALIASES[token] ?? tokenToPascal(token);
+    if (library === "iconoir")
+      return ICONOIR_ALIASES[token] ?? tokenToPascal(token);
     return token;
   }, [library, token]);
 
@@ -172,7 +300,9 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
         maps.byNormalizedNoIcon?.get(normalizeKey("QuestionMarkCircled"))
       : library === "phosphor"
         ? maps.byNormalized.get(normalizeKey("QuestionMarkIcon"))
-        : maps.byNormalized.get(normalizeKey("CircleHelp")));
+        : library === "untitledui" || library === "iconoir"
+          ? maps.byNormalized.get(normalizeKey("HelpCircle"))
+          : maps.byNormalized.get(normalizeKey("CircleHelp")));
 
   if (!Component) return null;
 
@@ -186,7 +316,7 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
     );
   }
 
-  if (library === "radix") {
+  if (library === "radix" || library === "iconoir") {
     return (
       <Component width={resolvedSize} height={resolvedSize} className={className} />
     );

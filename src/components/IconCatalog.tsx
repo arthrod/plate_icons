@@ -24,7 +24,13 @@ export function IconCatalog() {
 
 	const enabledLibraries = useMemo(() => {
 		if (librarySelection === "all")
-			return new Set<IconLibraryId>(["lucide", "radix", "phosphor"]);
+			return new Set<IconLibraryId>([
+				"lucide",
+				"radix",
+				"phosphor",
+				"untitledui",
+				"iconoir",
+			]);
 		return new Set<IconLibraryId>([librarySelection]);
 	}, [librarySelection]);
 
@@ -128,7 +134,7 @@ export function IconCatalog() {
 											const iconProps =
 												e.library === "lucide"
 													? { size: 18, strokeWidth }
-													: e.library === "radix"
+													: e.library === "radix" || e.library === "iconoir"
 														? { width: 18, height: 18 }
 														: { size: 18 };
 											return (
@@ -303,7 +309,7 @@ function IconTile({
 	const iconProps =
 		entry.library === "lucide"
 			? { size, strokeWidth }
-			: entry.library === "radix"
+			: entry.library === "radix" || entry.library === "iconoir"
 				? { width: size, height: size }
 				: { size };
 
