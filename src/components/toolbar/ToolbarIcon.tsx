@@ -211,6 +211,63 @@ const ICONOIR_ALIASES: Record<string, string> = {
   "video": "VideoCamera",
 } as const;
 
+const SOLAR_ALIASES: Record<string, string> = {
+  "a-large-small": "Text",
+  "arrow-up-to-line": "Upload",
+  "baseline": "Text",
+  "bold": "TextBold",
+  "chevron-down": "AltArrowDown",
+  "chevron-right": "ArrowRight",
+  "chevrons-left": "DoubleAltArrowLeft",
+  "circle-user-round": "UserCircle",
+  "clock-9": "ClockCircle",
+  "code-2": "CodeFile",
+  "ellipsis": "MenuDots",
+  "file-pen": "Pen",
+  "file-plus": "DocumentAdd",
+  "file-text": "FileText",
+  "file": "File",
+  "highlighter": "RulerPen",
+  "house": "Home",
+  "indent": "ParagraphSpacing",
+  "italic": "TextItalic",
+  "link": "Link",
+  "list-ordered": "List",
+  "list": "List",
+  "list-checks": "ListCheck",
+  "menu": "MenuDots",
+  "message-square": "ChatSquare",
+  "message-square-plus": "ChatSquareArrow",
+  "message-square-text": "ChatLine",
+  "more-horizontal": "MenuDots",
+  "move-vertical": "ListVertical",
+  "music": "MusicNote",
+  "outdent": "ParagraphSpacing",
+  "pen": "Pen",
+  "pencil-line": "Pen2",
+  "plus": "AddSquare",
+  "redo-2": "UndoRight",
+  "save": "FileSend",
+  "search": "Magnifer",
+  "settings": "Settings",
+  "settings-2": "Tuning",
+  "smile": "SmileCircle",
+  "square-pen": "PenNewSquare",
+  "strikethrough": "TextCross",
+  "superscript": "Text",
+  "table": "List",
+  "trash-2": "TrashBinTrash",
+  "type": "Text",
+  "underline": "TextUnderline",
+  "undo-2": "UndoLeft",
+  "upload": "Upload",
+  "users": "UsersGroup",
+  "wand-sparkles": "MagicStick",
+  "x": "CloseSquare",
+  "image": "Gallery",
+  "video": "Videocamera",
+} as const;
+
 function normalizeKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
@@ -250,6 +307,7 @@ function buildLibraryMaps() {
     phosphor: { byNormalized: new Map() },
     untitledui: { byNormalized: new Map() },
     iconoir: { byNormalized: new Map() },
+    solar: { byNormalized: new Map() },
   };
 
   for (const lib of ICON_LIBRARIES) {
@@ -280,6 +338,8 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
       return UNTITLEUI_ALIASES[token] ?? tokenToPascal(token);
     if (library === "iconoir")
       return ICONOIR_ALIASES[token] ?? tokenToPascal(token);
+    if (library === "solar")
+      return SOLAR_ALIASES[token] ?? tokenToPascal(token);
     return token;
   }, [library, token]);
 
@@ -300,7 +360,7 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
         maps.byNormalizedNoIcon?.get(normalizeKey("QuestionMarkCircled"))
       : library === "phosphor"
         ? maps.byNormalized.get(normalizeKey("QuestionMarkIcon"))
-        : library === "untitledui" || library === "iconoir"
+      : library === "untitledui" || library === "iconoir" || library === "solar"
           ? maps.byNormalized.get(normalizeKey("HelpCircle"))
           : maps.byNormalized.get(normalizeKey("CircleHelp")));
 

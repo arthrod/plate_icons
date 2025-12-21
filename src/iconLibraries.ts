@@ -3,6 +3,7 @@ import * as Radix from "@radix-ui/react-icons";
 import * as UntitledUi from "@untitledui/icons";
 import * as Iconoir from "iconoir-react";
 import * as Lucide from "lucide-react";
+import * as Solar from "@solar-icons/react";
 import type React from "react";
 
 export type IconLibraryId =
@@ -10,7 +11,8 @@ export type IconLibraryId =
 	| "radix"
 	| "phosphor"
 	| "untitledui"
-	| "iconoir";
+	| "iconoir"
+	| "solar";
 
 export type IconEntry = {
 		library: IconLibraryId;
@@ -38,6 +40,7 @@ const NON_ICON_EXPORTS = {
 		"IconoirProvider",
 		"default",
 	]),
+	solar: new Set<string>(["IconBase", "SolarProvider", "useSolar", "default", "SSR", "solar"]),
 } satisfies Record<IconLibraryId, Set<string>>;
 
 function isRenderableReactComponent(
@@ -96,6 +99,11 @@ export const ICON_LIBRARIES = [
 		id: "iconoir" as const,
 		label: "iconoir-react",
 		entries: entriesForLibrary("iconoir", Iconoir as Record<string, unknown>),
+	},
+	{
+		id: "solar" as const,
+		label: "@solar-icons/react",
+		entries: entriesForLibrary("solar", Solar as Record<string, unknown>),
 	},
 ] as const satisfies ReadonlyArray<{
 	id: IconLibraryId;
