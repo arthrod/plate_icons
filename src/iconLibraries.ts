@@ -1,9 +1,9 @@
 import * as Phosphor from "@phosphor-icons/react";
 import * as Radix from "@radix-ui/react-icons";
+import * as Solar from "@solar-icons/react";
 import * as UntitledUi from "@untitledui/icons";
 import * as Iconoir from "iconoir-react";
 import * as Lucide from "lucide-react";
-import * as Solar from "@solar-icons/react";
 import type React from "react";
 
 export type IconLibraryId =
@@ -40,7 +40,7 @@ const NON_ICON_EXPORTS = {
 		"IconoirProvider",
 		"default",
 	]),
-	solar: new Set<string>(["IconBase", "SolarProvider", "useSolar", "default", "SSR", "solar"]),
+	solar: new Set<string>(["SSR", "category", "default", "solar"]),
 } satisfies Record<IconLibraryId, Set<string>>;
 
 function isRenderableReactComponent(

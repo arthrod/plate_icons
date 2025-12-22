@@ -30,6 +30,7 @@ export function IconCatalog() {
 				"phosphor",
 				"untitledui",
 				"iconoir",
+				"solar",
 			]);
 		return new Set<IconLibraryId>([librarySelection]);
 	}, [librarySelection]);

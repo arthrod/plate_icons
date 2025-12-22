@@ -62,6 +62,7 @@ export function App() {
                 <option value="phosphor">@phosphor-icons/react</option>
                 <option value="untitledui">@untitledui/icons</option>
                 <option value="iconoir">iconoir-react</option>
+                <option value="solar">@solar-icons/react</option>
               </select>
             </label>
           ) : null}

@@ -261,7 +261,7 @@ const SOLAR_ALIASES: Record<string, string> = {
   "underline": "TextUnderline",
   "undo-2": "UndoLeft",
   "upload": "Upload",
-  "users": "UsersGroup",
+  "users": "UsersGroupRounded",
   "wand-sparkles": "MagicStick",
   "x": "CloseSquare",
   "image": "Gallery",
@@ -360,9 +360,11 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
         maps.byNormalizedNoIcon?.get(normalizeKey("QuestionMarkCircled"))
       : library === "phosphor"
         ? maps.byNormalized.get(normalizeKey("QuestionMarkIcon"))
-      : library === "untitledui" || library === "iconoir" || library === "solar"
+      : library === "untitledui" || library === "iconoir"
           ? maps.byNormalized.get(normalizeKey("HelpCircle"))
-          : maps.byNormalized.get(normalizeKey("CircleHelp")));
+          : library === "solar"
+            ? maps.byNormalized.get(normalizeKey("Help"))
+            : maps.byNormalized.get(normalizeKey("CircleHelp")));
 
   if (!Component) return null;
 
