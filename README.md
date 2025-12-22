@@ -12,12 +12,12 @@ Plate Icons is a small utility for browsing multiple icon libraries in one place
 https://plateicons.vercel.app
 
 ## Included Libraries
-- `lucide-react` (ISC) — https://lucide.dev · https://github.com/lucide-icons/lucide
-- `@radix-ui/react-icons` (MIT) — https://github.com/radix-ui/icons
-- `@phosphor-icons/react` (MIT) — https://phosphoricons.com · https://github.com/phosphor-icons/react
-- `@untitledui/icons` (MIT) — https://www.npmjs.com/package/@untitledui/icons
-- `iconoir-react` (MIT) — https://iconoir.com · https://github.com/iconoir-icons/iconoir
-- `@solar-icons/react` (MIT) — https://github.com/saoudi-h/solar-icons
+- `lucide-react` (ISC) — https://lucide.dev · https://github.com/lucide-icons/lucide — clean, modern stroke icons for product UI. Positives: very large catalog; strong legibility at small sizes.
+- `@radix-ui/react-icons` (MIT) — https://github.com/radix-ui/icons — compact UI icon set designed to pair well with Radix primitives. Positives: simple geometry; consistent visual weight.
+- `@phosphor-icons/react` (MIT) — https://phosphoricons.com · https://github.com/phosphor-icons/react — friendly icon family with multiple weights/styles. Positives: flexible weight system; broad coverage across UI and illustration-adjacent needs.
+- `@untitledui/icons` (MIT) — https://www.npmjs.com/package/@untitledui/icons — polished icon set aligned with modern SaaS interfaces. Positives: crisp details; cohesive look across the set.
+- `iconoir-react` (MIT) — https://iconoir.com · https://github.com/iconoir-icons/iconoir — extensive open-source icon library with a distinctive outline style. Positives: huge variety; recognizable shape language.
+- `@solar-icons/react` (MIT) — https://github.com/saoudi-h/solar-icons — large icon pack with multiple stylistic variants. Positives: lots of niche icons; supports size/weight props for easy tuning.
 
 All icon sets are owned by their respective authors. This project consumes them as dependencies; make sure your usage complies with each library’s license and any third‑party notices they ship.
 
