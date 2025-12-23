@@ -39,7 +39,6 @@ async function ensureDevBuild() {
     sourcemap: "external",
     minify: false,
     splitting: false,
-    watch: true,
   });
 }
 
