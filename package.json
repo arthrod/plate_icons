@@ -3,9 +3,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "bun run src/server.ts --hot",
-		"build": "bun build src/main.tsx --outdir public/dist --target browser --minify",
-		"start": "NODE_ENV=production bun run src/server.ts",
+		"dev": "bun run public/index.html --hot",
+		"build": "bun build src/main.tsx --outdir dist --target browser --minify",
+		"start": "NODE_ENV=production bun run public/index.html",
 		"typecheck": "bunx tsc --noEmit",
 		"lint": "oxlint src --fix --import-plugin --react-plugin --type-aware"
 	},

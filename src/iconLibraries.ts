@@ -40,7 +40,15 @@ const NON_ICON_EXPORTS = {
 		"IconoirProvider",
 		"default",
 	]),
-	solar: new Set<string>(["SSR", "category", "default", "solar"]),
+	solar: new Set<string>([
+		"IconBase",
+		"SolarProvider",
+		"useSolar",
+		"SSR",
+		"category",
+		"default",
+		"solar",
+	]),
 } satisfies Record<IconLibraryId, Set<string>>;
 
 function isRenderableReactComponent(
