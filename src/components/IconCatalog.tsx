@@ -1,3 +1,4 @@
+import type { IconWeight } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import {
 	ICON_LIBRARIES,
@@ -7,6 +8,15 @@ import {
 
 type GridDensity = "comfortable" | "compact";
 type LibrarySelection = "all" | IconLibraryId;
+
+const PHOSPHOR_WEIGHTS: IconWeight[] = [
+	"thin",
+	"light",
+	"regular",
+	"bold",
+	"fill",
+	"duotone",
+];
 
 function matchesQuery(name: string, query: string) {
 	const q = query.trim().toLowerCase();
@@ -21,6 +31,7 @@ export function IconCatalog() {
 	const [size, setSize] = useState(22);
 	const [strokeWidth, setStrokeWidth] = useState(2);
 	const [density, setDensity] = useState<GridDensity>("comfortable");
+	const [phosphorWeight, setPhosphorWeight] = useState<IconWeight>("regular");
 
 	const enabledLibraries = useMemo(() => {
 		if (librarySelection === "all")
@@ -137,7 +148,9 @@ export function IconCatalog() {
 													? { size: 18, strokeWidth }
 													: e.library === "radix" || e.library === "iconoir"
 														? { width: 18, height: 18 }
-														: { size: 18 };
+														: e.library === "phosphor"
+															? { size: 18, weight: phosphorWeight }
+															: { size: 18 };
 											return (
 												<span
 													key={`${card.id}:${e.library}:${e.exportName}`}
@@ -251,6 +264,38 @@ export function IconCatalog() {
 						</div>
 					</div>
 
+					{(librarySelection === "all" || librarySelection === "phosphor") && (
+						<div className="flex flex-col gap-2">
+							<span className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+								Phosphor Weight
+							</span>
+							<div className="flex flex-wrap gap-1.5">
+								{PHOSPHOR_WEIGHTS.map((weight) => (
+									<button
+										key={weight}
+										type="button"
+										className={[
+											"rounded-md px-3 py-1.5 text-sm font-semibold transition capitalize",
+											phosphorWeight === weight
+												? weight === "duotone"
+													? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
+													: "bg-indigo-500 text-white"
+												: "bg-white/5 text-zinc-200 hover:bg-white/10",
+										].join(" ")}
+										onClick={() => setPhosphorWeight(weight)}
+									>
+										{weight}
+									</button>
+								))}
+							</div>
+							{phosphorWeight === "duotone" && (
+								<p className="text-xs text-zinc-400">
+									Duotone uses two opacity layers for depth and visual hierarchy
+								</p>
+							)}
+						</div>
+					)}
+
 					<div className="flex flex-wrap items-center justify-between gap-3 text-sm">
 						<div className="text-zinc-300">
 							Showing{" "}
@@ -266,6 +311,7 @@ export function IconCatalog() {
 								setSize(22);
 								setStrokeWidth(2);
 								setDensity("comfortable");
+								setPhosphorWeight("regular");
 							}}
 						>
 							Reset
@@ -281,6 +327,7 @@ export function IconCatalog() {
 						entry={e}
 						size={size}
 						strokeWidth={strokeWidth}
+						phosphorWeight={phosphorWeight}
 						tileClassName={tileClasses}
 					/>
 				))}
@@ -293,11 +340,13 @@ function IconTile({
 	entry,
 	size,
 	strokeWidth,
+	phosphorWeight,
 	tileClassName,
 }: {
 	entry: IconEntry;
 	size: number;
 	strokeWidth: number;
+	phosphorWeight: IconWeight;
 	tileClassName: string;
 }) {
 	const { Component } = entry;
@@ -312,7 +361,9 @@ function IconTile({
 			? { size, strokeWidth }
 			: entry.library === "radix" || entry.library === "iconoir"
 				? { width: size, height: size }
-				: { size };
+				: entry.library === "phosphor"
+					? { size, weight: phosphorWeight }
+					: { size };
 
 	return (
 		<div className={tileClassName}>

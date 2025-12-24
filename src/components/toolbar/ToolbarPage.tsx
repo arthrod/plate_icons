@@ -4,8 +4,10 @@ import { ToolbarIcon } from "./ToolbarIcon";
 
 export function ToolbarPage({
   iconLibrary,
+  mockActiveState = false,
 }: {
   iconLibrary: IconLibraryId;
+  mockActiveState?: boolean;
 }) {
   const cssText = useMemo(
     () => `
@@ -470,10 +472,10 @@ export function ToolbarPage({
               <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                 <span className="group-number">S2</span>
                 <button className="toolbar-btn" title="S2a: Close sidebar" type="button">
-                  <ToolbarIcon library={iconLibrary} token="chevrons-left" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="chevrons-left" />
                 </button>
                 <button className="toolbar-btn" title="S2b: Create new page" type="button">
-                  <ToolbarIcon library={iconLibrary} token="square-pen" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="square-pen" />
                 </button>
               </div>
             </div>
@@ -495,7 +497,7 @@ export function ToolbarPage({
                   style={{ justifyContent: "flex-start", width: "100%" }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="search" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="search" />
                   <span style={{ marginLeft: 8 }}>Search</span>
                 </button>
               </div>
@@ -512,7 +514,7 @@ export function ToolbarPage({
                   style={{ justifyContent: "flex-start", width: "100%" }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="house" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="house" />
                   <span style={{ marginLeft: 8 }}>Editor</span>
                 </button>
               </div>
@@ -536,7 +538,7 @@ export function ToolbarPage({
                   style={{ width: 24, height: 24 }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="plus" size={14} />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="plus" size={14} />
                 </button>
               </div>
 
@@ -586,7 +588,7 @@ export function ToolbarPage({
                   }}
                   {...docRowHoverHandlers}
                 >
-                  <ToolbarIcon library={iconLibrary} token="ellipsis" size={14} />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="ellipsis" size={14} />
                   <span>More...</span>
                 </div>
               </div>
@@ -609,7 +611,7 @@ export function ToolbarPage({
                   style={{ justifyContent: "flex-start", width: "100%" }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="settings" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="settings" />
                   <span style={{ marginLeft: 8 }}>Settings</span>
                 </button>
               </div>
@@ -631,7 +633,7 @@ export function ToolbarPage({
                   style={{ justifyContent: "flex-start", width: "100%" }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="file-text" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-text" />
                   <span style={{ marginLeft: 8 }}>Editor</span>
                 </button>
               </div>
@@ -648,7 +650,7 @@ export function ToolbarPage({
                   style={{ justifyContent: "flex-start", width: "100%" }}
                   type="button"
                 >
-                  <ToolbarIcon library={iconLibrary} token="trash-2" />
+                  <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="trash-2" />
                   <span style={{ marginLeft: 8 }}>Trash</span>
                 </button>
               </div>
@@ -698,10 +700,10 @@ export function ToolbarPage({
                 FL-G2
               </span>
               <button className="toolbar-btn" title="FL-G2a: Comment" type="button">
-                <ToolbarIcon library={iconLibrary} token="message-square" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square" />
               </button>
               <button className="toolbar-btn" title="FL-G2b: Suggestion" type="button">
-                <ToolbarIcon library={iconLibrary} token="message-square-plus" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square-plus" />
               </button>
             </div>
 
@@ -712,32 +714,32 @@ export function ToolbarPage({
                 FL-G3
               </span>
               <button className="toolbar-btn toolbar-btn-text" title="FL-G3a: Turn Into" type="button">
-                <ToolbarIcon library={iconLibrary} token="type" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="type" />
               </button>
               <button className="toolbar-btn" title="FL-G3b: Bold (⌘+B)" type="button">
-                <ToolbarIcon library={iconLibrary} token="bold" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="bold" />
               </button>
               <button className="toolbar-btn" title="FL-G3c: Italic (⌘+I)" type="button">
-                <ToolbarIcon library={iconLibrary} token="italic" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="italic" />
               </button>
               <button className="toolbar-btn" title="FL-G3d: Underline (⌘+U)" type="button">
-                <ToolbarIcon library={iconLibrary} token="underline" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="underline" />
               </button>
               <button
                 className="toolbar-btn"
                 title="FL-G3e: Strikethrough (⌘+⇧+X)"
                 type="button"
               >
-                <ToolbarIcon library={iconLibrary} token="strikethrough" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="strikethrough" />
               </button>
               <button className="toolbar-btn" title="FL-G3f: Code (⌘+E)" type="button">
-                <ToolbarIcon library={iconLibrary} token="code-2" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="code-2" />
               </button>
               <button className="toolbar-btn" title="FL-G3g: Link" type="button">
-                <ToolbarIcon library={iconLibrary} token="link" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="link" />
               </button>
               <button className="toolbar-btn" title="FL-G3h: Font Color" type="button">
-                <ToolbarIcon library={iconLibrary} token="baseline" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="baseline" />
               </button>
             </div>
 
@@ -748,7 +750,7 @@ export function ToolbarPage({
                 FL-G4
               </span>
               <button className="toolbar-btn" title="FL-G4a: More Options" type="button">
-                <ToolbarIcon library={iconLibrary} token="more-horizontal" />
+                <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="more-horizontal" />
               </button>
             </div>
           </div>
@@ -764,21 +766,21 @@ export function ToolbarPage({
                 <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                   <span className="group-number">N1</span>
                   <button className="toolbar-btn" title="N1a: Menu (toggle sidebar)" type="button">
-                    <ToolbarIcon library={iconLibrary} token="menu" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="menu" />
                   </button>
                 </div>
 
                 <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                   <span className="group-number">N2</span>
                   <button className="toolbar-btn" title="N2a: Create new note" type="button">
-                    <ToolbarIcon library={iconLibrary} token="file-plus" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-plus" />
                   </button>
                 </div>
 
                 <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                   <span className="group-number">N3</span>
                   <button className="toolbar-btn" title="N3a: Change icon (emoji or file-pen)" type="button">
-                    <ToolbarIcon library={iconLibrary} token="file-pen" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-pen" />
                   </button>
                 </div>
 
@@ -806,16 +808,16 @@ export function ToolbarPage({
                     style={{ color: "#f59e0b" }}
                     type="button"
                   >
-                    <ToolbarIcon library={iconLibrary} token="pencil-line" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="pencil-line" />
                     <span style={{ fontSize: 11, margin: "0 4px" }}>Suggesting</span>
-                    <ToolbarIcon library={iconLibrary} token="x" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="x" />
                   </button>
                 </div>
 
                 <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                   <span className="group-number">N6</span>
                   <button className="toolbar-btn toolbar-btn-text" title="N6a: Share your file" type="button">
-                    <ToolbarIcon library={iconLibrary} token="users" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="users" />
                     <span style={{ marginLeft: 4 }}>Share</span>
                   </button>
                 </div>
@@ -823,10 +825,10 @@ export function ToolbarPage({
                 <div className="toolbar-group group-navbar" style={{ padding: "2px 4px" }}>
                   <span className="group-number">N7</span>
                   <button className="toolbar-btn" title="N7a: View all comments" type="button">
-                    <ToolbarIcon library={iconLibrary} token="message-square-text" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square-text" />
                   </button>
                   <button className="toolbar-btn" title="N7b: View all versions (history)" type="button">
-                    <ToolbarIcon library={iconLibrary} token="clock-9" />
+                    <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="clock-9" />
                   </button>
                 </div>
               </div>
@@ -845,13 +847,13 @@ export function ToolbarPage({
                   <div className="toolbar-group group-save-io">
                     <span className="group-number">F1-G1</span>
                     <button className="toolbar-btn" title="F1-G1a: Save Version" type="button">
-                      <ToolbarIcon library={iconLibrary} token="save" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="save" />
                     </button>
                     <button className="toolbar-btn" title="F1-G1b: Export" type="button">
-                      <ToolbarIcon library={iconLibrary} token="arrow-up-to-line" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="arrow-up-to-line" />
                     </button>
                     <button className="toolbar-btn" title="F1-G1c: Import" type="button">
-                      <ToolbarIcon library={iconLibrary} token="upload" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="upload" />
                     </button>
                   </div>
 
@@ -863,7 +865,7 @@ export function ToolbarPage({
                       16
                     </button>
                     <button className="toolbar-btn toolbar-btn-text" title="F1-G3b: Font Family" type="button">
-                      <ToolbarIcon library={iconLibrary} token="a-large-small" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="a-large-small" />
                       Default
                     </button>
                   </div>
@@ -873,19 +875,19 @@ export function ToolbarPage({
                   <div className="toolbar-group">
                     <span className="group-number">F1-G4</span>
                     <button className="toolbar-btn" title="F1-G4a: Align" type="button">
-                      <ToolbarIcon library={iconLibrary} token="align-left" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="align-left" />
                     </button>
                     <button className="toolbar-btn" title="F1-G4b: Numbered List" type="button">
-                      <ToolbarIcon library={iconLibrary} token="list-ordered" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list-ordered" />
                     </button>
                     <button className="toolbar-btn" title="F1-G4c: Bulleted List" type="button">
-                      <ToolbarIcon library={iconLibrary} token="list" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list" />
                     </button>
                     <button className="toolbar-btn" title="F1-G4d: Todo List" type="button">
-                      <ToolbarIcon library={iconLibrary} token="list-checks" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list-checks" />
                     </button>
                     <button className="toolbar-btn" title="F1-G4e: Toggle" type="button">
-                      <ToolbarIcon library={iconLibrary} token="chevron-right" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="chevron-right" />
                     </button>
                   </div>
 
@@ -894,13 +896,13 @@ export function ToolbarPage({
                   <div className="toolbar-group group-spacing">
                     <span className="group-number">F1-G5</span>
                     <button className="toolbar-btn" title="F1-G5a: Line Height" type="button">
-                      <ToolbarIcon library={iconLibrary} token="move-vertical" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="move-vertical" />
                     </button>
                     <button className="toolbar-btn" title="F1-G5b: Outdent" type="button">
-                      <ToolbarIcon library={iconLibrary} token="outdent" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="outdent" />
                     </button>
                     <button className="toolbar-btn" title="F1-G5c: Indent" type="button">
-                      <ToolbarIcon library={iconLibrary} token="indent" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="indent" />
                     </button>
                   </div>
 
@@ -909,16 +911,16 @@ export function ToolbarPage({
                   <div className="toolbar-group">
                     <span className="group-number">F1-G6</span>
                     <button className="toolbar-btn" title="F1-G6a: Image" type="button">
-                      <ToolbarIcon library={iconLibrary} token="image" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="image" />
                     </button>
                     <button className="toolbar-btn" title="F1-G6b: Video" type="button">
-                      <ToolbarIcon library={iconLibrary} token="video" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="video" />
                     </button>
                     <button className="toolbar-btn" title="F1-G6c: Audio" type="button">
-                      <ToolbarIcon library={iconLibrary} token="music" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="music" />
                     </button>
                     <button className="toolbar-btn" title="F1-G6d: File" type="button">
-                      <ToolbarIcon library={iconLibrary} token="file" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file" />
                     </button>
                   </div>
 
@@ -927,7 +929,7 @@ export function ToolbarPage({
                   <div className="toolbar-group group-comment">
                     <span className="group-number">F1-G14</span>
                     <button className="toolbar-btn" title="F1-G14a: Comment" type="button">
-                      <ToolbarIcon library={iconLibrary} token="message-square" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square" />
                     </button>
                   </div>
 
@@ -940,9 +942,9 @@ export function ToolbarPage({
                       title="F1-G8a: Mode Dropdown (Editing=pen, Viewing=eye, Suggestion=pencil-line)"
                       type="button"
                     >
-                      <ToolbarIcon library={iconLibrary} token="pen" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="pen" />
                       <span style={{ fontSize: 11, marginLeft: 4 }}>Editing</span>
-                      <ToolbarIcon library={iconLibrary} token="chevron-down" size={12} />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="chevron-down" size={12} />
                     </button>
                   </div>
                 </div>
@@ -951,7 +953,7 @@ export function ToolbarPage({
                   <div className="toolbar-group group-ai">
                     <span className="group-number">F2-G2</span>
                     <button className="toolbar-btn" title="F2-G2a: AI Commands" type="button">
-                      <ToolbarIcon library={iconLibrary} token="wand-sparkles" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="wand-sparkles" />
                     </button>
                   </div>
 
@@ -960,10 +962,10 @@ export function ToolbarPage({
                   <div className="toolbar-group group-save-io">
                     <span className="group-number">F2-G10</span>
                     <button className="toolbar-btn" title="F2-G10a: Undo" type="button">
-                      <ToolbarIcon library={iconLibrary} token="undo-2" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="undo-2" />
                     </button>
                     <button className="toolbar-btn" title="F2-G10b: Redo" type="button">
-                      <ToolbarIcon library={iconLibrary} token="redo-2" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="redo-2" />
                     </button>
                   </div>
 
@@ -972,29 +974,29 @@ export function ToolbarPage({
                   <div className="toolbar-group">
                     <span className="group-number">F2-G11</span>
                     <button className="toolbar-btn" title="F2-G11a: Bold (⌘+B)" type="button">
-                      <ToolbarIcon library={iconLibrary} token="bold" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="bold" />
                     </button>
                     <button className="toolbar-btn" title="F2-G11b: Italic (⌘+I)" type="button">
-                      <ToolbarIcon library={iconLibrary} token="italic" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="italic" />
                     </button>
                     <button className="toolbar-btn" title="F2-G11c: Underline (⌘+U)" type="button">
-                      <ToolbarIcon library={iconLibrary} token="underline" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="underline" />
                     </button>
                     <button className="toolbar-btn" title="F2-G11d: Superscript (⌘+.)" type="button">
-                      <ToolbarIcon library={iconLibrary} token="superscript" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="superscript" />
                     </button>
                     <button
                       className="toolbar-btn"
                       title="F2-G11e: Strikethrough (⌘+⇧+M)"
                       type="button"
                     >
-                      <ToolbarIcon library={iconLibrary} token="strikethrough" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="strikethrough" />
                     </button>
                     <button className="toolbar-btn" title="F2-G11f: Font Color" type="button">
-                      <ToolbarIcon library={iconLibrary} token="baseline" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="baseline" />
                     </button>
                     <button className="toolbar-btn group-comment" title="F2-G11g: Highlight" type="button">
-                      <ToolbarIcon library={iconLibrary} token="highlighter" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="highlighter" />
                     </button>
                   </div>
 
@@ -1003,11 +1005,11 @@ export function ToolbarPage({
                   <div className="toolbar-group group-insert">
                     <span className="group-number">F2-G12</span>
                     <button className="toolbar-btn toolbar-btn-text" title="F2-G12a: Insert" type="button">
-                      <ToolbarIcon library={iconLibrary} token="plus" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="plus" />
                       Insert
                     </button>
                     <button className="toolbar-btn toolbar-btn-text" title="F2-G12b: Turn Into" type="button">
-                      <ToolbarIcon library={iconLibrary} token="type" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="type" />
                       Turn into
                     </button>
                   </div>
@@ -1017,13 +1019,13 @@ export function ToolbarPage({
                   <div className="toolbar-group">
                     <span className="group-number">F2-G13</span>
                     <button className="toolbar-btn" title="F2-G13a: Link" type="button">
-                      <ToolbarIcon library={iconLibrary} token="link" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="link" />
                     </button>
                     <button className="toolbar-btn" title="F2-G13b: Table" type="button">
-                      <ToolbarIcon library={iconLibrary} token="table" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="table" />
                     </button>
                     <button className="toolbar-btn" title="F2-G13c: Emoji" type="button">
-                      <ToolbarIcon library={iconLibrary} token="smile" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="smile" />
                     </button>
                   </div>
 
@@ -1032,7 +1034,7 @@ export function ToolbarPage({
                   <div className="toolbar-group group-ai">
                     <span className="group-number">F2-G9</span>
                     <button className="toolbar-btn" title="F2-G9a: Page Settings" type="button">
-                      <ToolbarIcon library={iconLibrary} token="settings-2" />
+                      <ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="settings-2" />
                     </button>
                   </div>
                 </div>
@@ -1040,14 +1042,14 @@ export function ToolbarPage({
             </div>
           </div>
 
-          <ToolbarLegend iconLibrary={iconLibrary} />
+          <ToolbarLegend iconLibrary={iconLibrary} mockActiveState={mockActiveState} />
         </div>
       </div>
     </div>
   );
 }
 
-function ToolbarLegend({ iconLibrary }: { iconLibrary: IconLibraryId }) {
+function ToolbarLegend({ iconLibrary, mockActiveState = false }: { iconLibrary: IconLibraryId; mockActiveState?: boolean }) {
   return (
     <>
       <div className="legend">
@@ -1056,76 +1058,76 @@ function ToolbarLegend({ iconLibrary }: { iconLibrary: IconLibraryId }) {
         <div className="legend-section">
           <div className="legend-section-title">Sidebar (S) — 5 Groups, 10 Buttons</div>
           <div className="legend-grid">
-            <LegendItem num="S1a" icon={<ToolbarIcon library={iconLibrary} token="circle-user-round" size={14} />} text="Workspace Switcher — Account/workspace dropdown" numBg="#3b82f6" />
-            <LegendItem num="S2a" icon={<ToolbarIcon library={iconLibrary} token="chevrons-left" size={14} />} text="Close Sidebar — ChevronsLeft icon" numBg="#3b82f6" />
-            <LegendItem num="S2b" icon={<ToolbarIcon library={iconLibrary} token="square-pen" size={14} />} text="New Page — SquarePen icon (newPage)" numBg="#3b82f6" />
-            <LegendItem num="S3a" icon={<ToolbarIcon library={iconLibrary} token="search" size={14} />} text="Search — Open search modal" />
-            <LegendItem num="S3b" icon={<ToolbarIcon library={iconLibrary} token="house" size={14} />} text="Home/Editor — HouseIcon" />
-            <LegendItem num="S4a" icon={<ToolbarIcon library={iconLibrary} token="plus" size={14} />} text="Add Page — Create in section" />
-            <LegendItem num="S5a" icon={<ToolbarIcon library={iconLibrary} token="settings" size={14} />} text="Settings — Account & settings modal" />
-            <LegendItem num="S5b" icon={<ToolbarIcon library={iconLibrary} token="file-text" size={14} />} text="Editor — FileText icon" />
-            <LegendItem num="S5c" icon={<ToolbarIcon library={iconLibrary} token="trash-2" size={14} />} text="Trash — Restore deleted pages" />
+            <LegendItem num="S1a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="circle-user-round" size={14} />} text="Workspace Switcher — Account/workspace dropdown" numBg="#3b82f6" />
+            <LegendItem num="S2a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="chevrons-left" size={14} />} text="Close Sidebar — ChevronsLeft icon" numBg="#3b82f6" />
+            <LegendItem num="S2b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="square-pen" size={14} />} text="New Page — SquarePen icon (newPage)" numBg="#3b82f6" />
+            <LegendItem num="S3a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="search" size={14} />} text="Search — Open search modal" />
+            <LegendItem num="S3b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="house" size={14} />} text="Home/Editor — HouseIcon" />
+            <LegendItem num="S4a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="plus" size={14} />} text="Add Page — Create in section" />
+            <LegendItem num="S5a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="settings" size={14} />} text="Settings — Account & settings modal" />
+            <LegendItem num="S5b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-text" size={14} />} text="Editor — FileText icon" />
+            <LegendItem num="S5c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="trash-2" size={14} />} text="Trash — Restore deleted pages" />
           </div>
         </div>
 
         <div className="legend-section">
           <div className="legend-section-title">NavBar (N) — 7 Groups, 9 Buttons</div>
           <div className="legend-grid">
-            <LegendItem num="N1a" icon={<ToolbarIcon library={iconLibrary} token="menu" size={14} />} text="Menu — Toggle sidebar (when collapsed)" numBg="#3b82f6" />
-            <LegendItem num="N2a" icon={<ToolbarIcon library={iconLibrary} token="file-plus" size={14} />} text="Create New Note — FilePlus icon" numBg="#3b82f6" />
-            <LegendItem num="N3a" icon={<ToolbarIcon library={iconLibrary} token="file-pen" size={14} />} text="Document Icon — Change icon (emoji or file-pen)" numBg="#3b82f6" />
+            <LegendItem num="N1a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="menu" size={14} />} text="Menu — Toggle sidebar (when collapsed)" numBg="#3b82f6" />
+            <LegendItem num="N2a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-plus" size={14} />} text="Create New Note — FilePlus icon" numBg="#3b82f6" />
+            <LegendItem num="N3a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file-pen" size={14} />} text="Document Icon — Change icon (emoji or file-pen)" numBg="#3b82f6" />
             <LegendItem num="N4" icon={<span style={{ fontSize: 10, color: "#a1a1aa" }}>Title</span>} text="Document Title — Editable name" numBg="#3b82f6" />
-            <LegendItem num="N5a" icon={<ToolbarIcon library={iconLibrary} token="pencil-line" size={14} />} text="Suggesting — PencilLine + X (when active)" numBg="#f59e0b" />
-            <LegendItem num="N6a" icon={<ToolbarIcon library={iconLibrary} token="users" size={14} />} text={'Share — Users icon + "Share" text'} numBg="#3b82f6" />
-            <LegendItem num="N7a" icon={<ToolbarIcon library={iconLibrary} token="message-square-text" size={14} />} text="Comments — MessageSquareText icon" numBg="#3b82f6" />
-            <LegendItem num="N7b" icon={<ToolbarIcon library={iconLibrary} token="clock-9" size={14} />} text="History — Clock9 icon (versions)" numBg="#3b82f6" />
+            <LegendItem num="N5a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="pencil-line" size={14} />} text="Suggesting — PencilLine + X (when active)" numBg="#f59e0b" />
+            <LegendItem num="N6a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="users" size={14} />} text={'Share — Users icon + "Share" text'} numBg="#3b82f6" />
+            <LegendItem num="N7a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square-text" size={14} />} text="Comments — MessageSquareText icon" numBg="#3b82f6" />
+            <LegendItem num="N7b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="clock-9" size={14} />} text="History — Clock9 icon (versions)" numBg="#3b82f6" />
           </div>
         </div>
 
         <div className="legend-section">
           <div className="legend-section-title">Fixed Toolbar Row 1 (F1) — 7 Groups, 17 Buttons</div>
           <div className="legend-grid">
-            <LegendItem num="F1-G1a" icon={<ToolbarIcon library={iconLibrary} token="save" size={14} />} text="Save Version" numBg="#6366f1" />
-            <LegendItem num="F1-G1b" icon={<ToolbarIcon library={iconLibrary} token="arrow-up-to-line" size={14} />} text="Export" numBg="#6366f1" />
-            <LegendItem num="F1-G1c" icon={<ToolbarIcon library={iconLibrary} token="upload" size={14} />} text="Import" numBg="#6366f1" />
+            <LegendItem num="F1-G1a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="save" size={14} />} text="Save Version" numBg="#6366f1" />
+            <LegendItem num="F1-G1b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="arrow-up-to-line" size={14} />} text="Export" numBg="#6366f1" />
+            <LegendItem num="F1-G1c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="upload" size={14} />} text="Import" numBg="#6366f1" />
             <LegendItem num="F1-G3a" icon={<span style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa" }}>16</span>} text="Font Size" />
-            <LegendItem num="F1-G3b" icon={<ToolbarIcon library={iconLibrary} token="a-large-small" size={14} />} text="Font Family" />
-            <LegendItem num="F1-G4a" icon={<ToolbarIcon library={iconLibrary} token="align-left" size={14} />} text="Align — Left/Center/Right/Justify" />
-            <LegendItem num="F1-G4b" icon={<ToolbarIcon library={iconLibrary} token="list-ordered" size={14} />} text="Numbered List" />
-            <LegendItem num="F1-G4c" icon={<ToolbarIcon library={iconLibrary} token="list" size={14} />} text="Bulleted List" />
-            <LegendItem num="F1-G4d" icon={<ToolbarIcon library={iconLibrary} token="list-checks" size={14} />} text="Todo List" />
-            <LegendItem num="F1-G4e" icon={<ToolbarIcon library={iconLibrary} token="chevron-right" size={14} />} text="Toggle — Collapsible" />
-            <LegendItem num="F1-G5a" icon={<ToolbarIcon library={iconLibrary} token="move-vertical" size={14} />} text="Line Height" numBg="#ec4899" />
-            <LegendItem num="F1-G5b" icon={<ToolbarIcon library={iconLibrary} token="outdent" size={14} />} text="Outdent" numBg="#ec4899" />
-            <LegendItem num="F1-G5c" icon={<ToolbarIcon library={iconLibrary} token="indent" size={14} />} text="Indent" numBg="#ec4899" />
-            <LegendItem num="F1-G6a" icon={<ToolbarIcon library={iconLibrary} token="image" size={14} />} text="Image" />
-            <LegendItem num="F1-G6b" icon={<ToolbarIcon library={iconLibrary} token="video" size={14} />} text="Video" />
-            <LegendItem num="F1-G6c" icon={<ToolbarIcon library={iconLibrary} token="music" size={14} />} text="Audio" />
-            <LegendItem num="F1-G6d" icon={<ToolbarIcon library={iconLibrary} token="file" size={14} />} text="File" />
-            <LegendItem num="F1-G14a" icon={<ToolbarIcon library={iconLibrary} token="message-square" size={14} />} text="Comment" numBg="#f59e0b" />
-            <LegendItem num="F1-G8a" icon={<ToolbarIcon library={iconLibrary} token="pen" size={14} />} text="Mode Dropdown — Editing(pen)/Viewing(eye)/Suggestion(pencil-line)" numBg="#3b82f6" />
+            <LegendItem num="F1-G3b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="a-large-small" size={14} />} text="Font Family" />
+            <LegendItem num="F1-G4a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="align-left" size={14} />} text="Align — Left/Center/Right/Justify" />
+            <LegendItem num="F1-G4b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list-ordered" size={14} />} text="Numbered List" />
+            <LegendItem num="F1-G4c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list" size={14} />} text="Bulleted List" />
+            <LegendItem num="F1-G4d" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="list-checks" size={14} />} text="Todo List" />
+            <LegendItem num="F1-G4e" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="chevron-right" size={14} />} text="Toggle — Collapsible" />
+            <LegendItem num="F1-G5a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="move-vertical" size={14} />} text="Line Height" numBg="#ec4899" />
+            <LegendItem num="F1-G5b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="outdent" size={14} />} text="Outdent" numBg="#ec4899" />
+            <LegendItem num="F1-G5c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="indent" size={14} />} text="Indent" numBg="#ec4899" />
+            <LegendItem num="F1-G6a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="image" size={14} />} text="Image" />
+            <LegendItem num="F1-G6b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="video" size={14} />} text="Video" />
+            <LegendItem num="F1-G6c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="music" size={14} />} text="Audio" />
+            <LegendItem num="F1-G6d" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="file" size={14} />} text="File" />
+            <LegendItem num="F1-G14a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square" size={14} />} text="Comment" numBg="#f59e0b" />
+            <LegendItem num="F1-G8a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="pen" size={14} />} text="Mode Dropdown — Editing(pen)/Viewing(eye)/Suggestion(pencil-line)" numBg="#3b82f6" />
           </div>
         </div>
 
         <div className="legend-section">
           <div className="legend-section-title">Fixed Toolbar Row 2 (F2) — 6 Groups, 14 Buttons</div>
           <div className="legend-grid">
-            <LegendItem num="F2-G2a" icon={<ToolbarIcon library={iconLibrary} token="wand-sparkles" size={14} />} text="AI Commands" numBg="#eab308" />
-            <LegendItem num="F2-G10a" icon={<ToolbarIcon library={iconLibrary} token="undo-2" size={14} />} text="Undo" numBg="#6366f1" />
-            <LegendItem num="F2-G10b" icon={<ToolbarIcon library={iconLibrary} token="redo-2" size={14} />} text="Redo" numBg="#6366f1" />
-            <LegendItem num="F2-G11a" icon={<ToolbarIcon library={iconLibrary} token="bold" size={14} />} text="Bold — ⌘+B" />
-            <LegendItem num="F2-G11b" icon={<ToolbarIcon library={iconLibrary} token="italic" size={14} />} text="Italic — ⌘+I" />
-            <LegendItem num="F2-G11c" icon={<ToolbarIcon library={iconLibrary} token="underline" size={14} />} text="Underline — ⌘+U" />
-            <LegendItem num="F2-G11d" icon={<ToolbarIcon library={iconLibrary} token="superscript" size={14} />} text="Superscript — ⌘+." />
-            <LegendItem num="F2-G11e" icon={<ToolbarIcon library={iconLibrary} token="strikethrough" size={14} />} text="Strikethrough — ⌘+⇧+M" />
-            <LegendItem num="F2-G11f" icon={<ToolbarIcon library={iconLibrary} token="baseline" size={14} />} text="Font Color" />
-            <LegendItem num="F2-G11g" icon={<ToolbarIcon library={iconLibrary} token="highlighter" size={14} />} text="Highlight" numBg="#f59e0b" />
-            <LegendItem num="F2-G12a" icon={<ToolbarIcon library={iconLibrary} token="plus" size={14} />} text="Insert — Block insert menu" numBg="#10b981" />
-            <LegendItem num="F2-G12b" icon={<ToolbarIcon library={iconLibrary} token="type" size={14} />} text="Turn Into — Convert block type" numBg="#10b981" />
-            <LegendItem num="F2-G13a" icon={<ToolbarIcon library={iconLibrary} token="link" size={14} />} text="Link" />
-            <LegendItem num="F2-G13b" icon={<ToolbarIcon library={iconLibrary} token="table" size={14} />} text="Table" />
-            <LegendItem num="F2-G13c" icon={<ToolbarIcon library={iconLibrary} token="smile" size={14} />} text="Emoji" />
-            <LegendItem num="F2-G9a" icon={<ToolbarIcon library={iconLibrary} token="settings-2" size={14} />} text="Page Settings — fullWidth, lock, smallText, TOC" numBg="#eab308" />
+            <LegendItem num="F2-G2a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="wand-sparkles" size={14} />} text="AI Commands" numBg="#eab308" />
+            <LegendItem num="F2-G10a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="undo-2" size={14} />} text="Undo" numBg="#6366f1" />
+            <LegendItem num="F2-G10b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="redo-2" size={14} />} text="Redo" numBg="#6366f1" />
+            <LegendItem num="F2-G11a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="bold" size={14} />} text="Bold — ⌘+B" />
+            <LegendItem num="F2-G11b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="italic" size={14} />} text="Italic — ⌘+I" />
+            <LegendItem num="F2-G11c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="underline" size={14} />} text="Underline — ⌘+U" />
+            <LegendItem num="F2-G11d" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="superscript" size={14} />} text="Superscript — ⌘+." />
+            <LegendItem num="F2-G11e" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="strikethrough" size={14} />} text="Strikethrough — ⌘+⇧+M" />
+            <LegendItem num="F2-G11f" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="baseline" size={14} />} text="Font Color" />
+            <LegendItem num="F2-G11g" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="highlighter" size={14} />} text="Highlight" numBg="#f59e0b" />
+            <LegendItem num="F2-G12a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="plus" size={14} />} text="Insert — Block insert menu" numBg="#10b981" />
+            <LegendItem num="F2-G12b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="type" size={14} />} text="Turn Into — Convert block type" numBg="#10b981" />
+            <LegendItem num="F2-G13a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="link" size={14} />} text="Link" />
+            <LegendItem num="F2-G13b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="table" size={14} />} text="Table" />
+            <LegendItem num="F2-G13c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="smile" size={14} />} text="Emoji" />
+            <LegendItem num="F2-G9a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="settings-2" size={14} />} text="Page Settings — fullWidth, lock, smallText, TOC" numBg="#eab308" />
           </div>
         </div>
 
@@ -1145,17 +1147,17 @@ function ToolbarLegend({ iconLibrary }: { iconLibrary: IconLibraryId }) {
                 <strong>Ask AI</strong> — ⌘+J, edit/generate/more
               </span>
             </div>
-            <LegendItem num="FL-G2a" icon={<ToolbarIcon library={iconLibrary} token="message-square" size={14} />} text="Comment" numBg="#8b5cf6" />
-            <LegendItem num="FL-G2b" icon={<ToolbarIcon library={iconLibrary} token="message-square-plus" size={14} />} text="Suggestion" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3a" icon={<ToolbarIcon library={iconLibrary} token="type" size={14} />} text="Turn Into" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3b" icon={<ToolbarIcon library={iconLibrary} token="bold" size={14} />} text="Bold — ⌘+B" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3c" icon={<ToolbarIcon library={iconLibrary} token="italic" size={14} />} text="Italic — ⌘+I" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3d" icon={<ToolbarIcon library={iconLibrary} token="underline" size={14} />} text="Underline — ⌘+U" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3e" icon={<ToolbarIcon library={iconLibrary} token="strikethrough" size={14} />} text="Strikethrough — ⌘+⇧+X" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3f" icon={<ToolbarIcon library={iconLibrary} token="code-2" size={14} />} text="Code — ⌘+E" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3g" icon={<ToolbarIcon library={iconLibrary} token="link" size={14} />} text="Link" numBg="#8b5cf6" />
-            <LegendItem num="FL-G3h" icon={<ToolbarIcon library={iconLibrary} token="baseline" size={14} />} text="Font Color" numBg="#8b5cf6" />
-            <LegendItem num="FL-G4a" icon={<ToolbarIcon library={iconLibrary} token="more-horizontal" size={14} />} text="More — Additional options" numBg="#8b5cf6" />
+            <LegendItem num="FL-G2a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square" size={14} />} text="Comment" numBg="#8b5cf6" />
+            <LegendItem num="FL-G2b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="message-square-plus" size={14} />} text="Suggestion" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="type" size={14} />} text="Turn Into" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3b" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="bold" size={14} />} text="Bold — ⌘+B" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3c" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="italic" size={14} />} text="Italic — ⌘+I" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3d" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="underline" size={14} />} text="Underline — ⌘+U" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3e" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="strikethrough" size={14} />} text="Strikethrough — ⌘+⇧+X" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3f" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="code-2" size={14} />} text="Code — ⌘+E" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3g" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="link" size={14} />} text="Link" numBg="#8b5cf6" />
+            <LegendItem num="FL-G3h" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="baseline" size={14} />} text="Font Color" numBg="#8b5cf6" />
+            <LegendItem num="FL-G4a" icon={<ToolbarIcon library={iconLibrary} isActive={mockActiveState} token="more-horizontal" size={14} />} text="More — Additional options" numBg="#8b5cf6" />
           </div>
         </div>
       </div>

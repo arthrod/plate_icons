@@ -9,6 +9,7 @@ export function App() {
   const [view, setView] = useState<View>("catalog");
   const [toolbarIconLibrary, setToolbarIconLibrary] =
     useState<IconLibraryId>("lucide");
+  const [mockActiveState, setMockActiveState] = useState(false);
 
   const tabs = useMemo(
     () =>
@@ -46,25 +47,41 @@ export function App() {
             </button>
           ))}
           {view === "toolbar" ? (
-            <label className="ml-2 flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
-                Toolbar Icons
-              </span>
-              <select
-                className="h-9 rounded-md border border-white/10 bg-black/20 px-3 text-sm font-semibold text-zinc-100 outline-none ring-indigo-500/30 focus:ring-2"
-                value={toolbarIconLibrary}
-                onChange={(e) =>
-                  setToolbarIconLibrary(e.target.value as IconLibraryId)
-                }
-              >
-                <option value="lucide">lucide-react</option>
-                <option value="radix">@radix-ui/react-icons</option>
-                <option value="phosphor">@phosphor-icons/react</option>
-                <option value="untitledui">@untitledui/icons</option>
-                <option value="iconoir">iconoir-react</option>
-                <option value="solar">@solar-icons/react</option>
-              </select>
-            </label>
+            <>
+              <label className="ml-2 flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                  Toolbar Icons
+                </span>
+                <select
+                  className="h-9 rounded-md border border-white/10 bg-black/20 px-3 text-sm font-semibold text-zinc-100 outline-none ring-indigo-500/30 focus:ring-2"
+                  value={toolbarIconLibrary}
+                  onChange={(e) =>
+                    setToolbarIconLibrary(e.target.value as IconLibraryId)
+                  }
+                >
+                  <option value="lucide">lucide-react</option>
+                  <option value="radix">@radix-ui/react-icons</option>
+                  <option value="phosphor">@phosphor-icons/react</option>
+                  <option value="phosphor-stateful">phosphor/stateful (hover→duotone)</option>
+                  <option value="untitledui">@untitledui/icons</option>
+                  <option value="iconoir">iconoir-react</option>
+                  <option value="solar">@solar-icons/react</option>
+                </select>
+              </label>
+              {toolbarIconLibrary === "phosphor-stateful" && (
+                <label className="ml-2 flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={mockActiveState}
+                    onChange={(e) => setMockActiveState(e.target.checked)}
+                    className="h-4 w-4 rounded border-white/10 bg-black/20 accent-indigo-500"
+                  />
+                  <span className="text-xs font-semibold text-zinc-300">
+                    Mock Active (fill)
+                  </span>
+                </label>
+              )}
+            </>
           ) : null}
           <a
             className="ml-auto rounded-md bg-white/5 px-3 py-1.5 text-sm font-semibold text-zinc-200 hover:bg-white/10"
@@ -80,7 +97,7 @@ export function App() {
       {view === "catalog" ? (
         <IconCatalog />
       ) : (
-        <ToolbarPage iconLibrary={toolbarIconLibrary} />
+        <ToolbarPage iconLibrary={toolbarIconLibrary} mockActiveState={mockActiveState} />
       )}
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import type { IconWeight } from "@phosphor-icons/react";
+import React, { useMemo, useState } from "react";
 import { ICON_LIBRARIES, type IconLibraryId } from "../../iconLibraries";
 
 type ToolbarIconProps = {
@@ -7,6 +8,7 @@ type ToolbarIconProps = {
   size?: number;
   strokeWidth?: number;
   className?: string;
+  isActive?: boolean;
 };
 
 const RADIX_ALIASES: Record<string, string> = {
@@ -326,13 +328,14 @@ function buildLibraryMaps() {
 
 const LIBRARY_MAPS = buildLibraryMaps();
 
-export function ToolbarIcon({ library, token, size, strokeWidth, className }: ToolbarIconProps) {
+export function ToolbarIcon({ library, token, size, strokeWidth, className, isActive }: ToolbarIconProps) {
   const resolvedSize = size ?? 16;
   const resolvedStrokeWidth = strokeWidth ?? 2;
+  const [isHovered, setIsHovered] = useState(false);
 
   const resolvedToken = useMemo(() => {
     if (library === "radix") return RADIX_ALIASES[token] ?? token;
-    if (library === "phosphor")
+    if (library === "phosphor" || library === "phosphor-stateful")
       return PHOSPHOR_ALIASES[token] ?? tokenToPascalIcon(token);
     if (library === "untitledui")
       return UNTITLEUI_ALIASES[token] ?? tokenToPascal(token);
@@ -346,7 +349,8 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
   const normalizedToken = normalizeKey(resolvedToken);
   const normalizedTokenNoDigits =
     library === "radix" ? stripTrailingDigits(normalizedToken) : normalizedToken;
-  const maps = LIBRARY_MAPS[library];
+  const effectiveLibrary = library === "phosphor-stateful" ? "phosphor" : library;
+  const maps = LIBRARY_MAPS[effectiveLibrary];
 
   const Component =
     maps.byNormalized.get(normalizedToken) ??
@@ -358,7 +362,7 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
     (library === "radix"
       ? maps.byNormalized.get(normalizeKey("QuestionMarkCircledIcon")) ??
         maps.byNormalizedNoIcon?.get(normalizeKey("QuestionMarkCircled"))
-      : library === "phosphor"
+      : library === "phosphor" || library === "phosphor-stateful"
         ? maps.byNormalized.get(normalizeKey("QuestionMarkIcon"))
       : library === "untitledui" || library === "iconoir"
           ? maps.byNormalized.get(normalizeKey("HelpCircle"))
@@ -381,6 +385,20 @@ export function ToolbarIcon({ library, token, size, strokeWidth, className }: To
   if (library === "radix" || library === "iconoir") {
     return (
       <Component width={resolvedSize} height={resolvedSize} className={className} />
+    );
+  }
+
+  // Phosphor stateful: regular → duotone (hover) → fill (active)
+  if (library === "phosphor-stateful") {
+    const weight: IconWeight = isActive ? "fill" : isHovered ? "duotone" : "regular";
+    return (
+      <span
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}
+      >
+        <Component size={resolvedSize} weight={weight} className={className} />
+      </span>
     );
   }
 

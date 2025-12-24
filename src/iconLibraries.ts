@@ -10,6 +10,7 @@ export type IconLibraryId =
 	| "lucide"
 	| "radix"
 	| "phosphor"
+	| "phosphor-stateful"
 	| "untitledui"
 	| "iconoir"
 	| "solar";
